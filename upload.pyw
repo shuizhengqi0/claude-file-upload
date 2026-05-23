@@ -155,7 +155,7 @@ class UploadApp:
         self.drop_cv = tk.Canvas(outer, bg=BG, highlightthickness=0, height=h)
         self.drop_cv.pack(fill="x", padx=15, pady=(8, 0))
         self._draw_drop(hover=False)
-        self.drop_cv.bind("<Button-1>", lambda e: self._pick())
+        self.drop_cv.bind("<Button-1>", lambda e: self._send() if self.file_content else self._pick())
 
     def _draw_drop(self, hover=False):
         c = self.drop_cv
@@ -406,7 +406,7 @@ class UploadApp:
         c.create_text(cx, cy, text=name, font=(MONO, 10, "bold"), fill=FG)
         c.create_text(cx, cy + 16, text=f"{lc}L  {chars:,}ch  {ext}",
                       font=(MONO, 8), fill=FG_DIM)
-        c.create_text(cx, cy + 30, text="✓ loaded", font=(MONO, 8), fill=GREEN)
+        c.create_text(cx, cy + 30, text="点击此处发送 →", font=(MONO, 9, "bold"), fill=AMBER)
 
     def _set_error(self, name, msg):
         self.lbl_name.config(text=name, fg=RED)
