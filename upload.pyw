@@ -88,8 +88,8 @@ class UploadApp:
 
         sw = self.root.winfo_screenwidth()
         sh = self.root.winfo_screenheight()
-        self.W = max(320, int(sw * 0.25))
-        self.H = max(260, int(sh * 0.28))
+        self.W = max(360, int(sw * 0.25))
+        self.H = max(320, int(sh * 0.28))
         x = (sw - self.W) // 2
         y = (sh - self.H) // 2
         self.root.geometry(f"{self.W}x{self.H}+{x}+{y}")
@@ -149,7 +149,7 @@ class UploadApp:
         self.root.geometry(f"+{x}+{y}")
 
     def _build_drop_zone(self):
-        h = max(100, int(self.H * 0.24))
+        h = max(120, int(self.H * 0.20))
         outer = tk.Frame(self.root, bg=BORDER)
         outer.pack(fill="x", padx=1, pady=0)
         self.drop_cv = tk.Canvas(outer, bg=BG, highlightthickness=0, height=h)
@@ -214,21 +214,21 @@ class UploadApp:
         self.preview.tag_configure("info", foreground=AMBER_D)
 
     def _build_footer(self):
-        footer = tk.Frame(self.root, bg=BG, height=40)
+        footer = tk.Frame(self.root, bg=BG, height=52)
         footer.pack(fill="x", padx=1, pady=(0, 1))
         footer.pack_propagate(False)
         inner = tk.Frame(footer, bg=BG)
-        inner.pack(fill="both", padx=14, pady=6)
+        inner.pack(fill="both", padx=14, pady=8)
 
-        self.lbl_status = tk.Label(inner, text="waiting", font=(MONO, 8),
-                                   bg=BG, fg=FG_DIM)
-        self.lbl_status.pack(side="left")
+        self.lbl_status = tk.Label(inner, text="waiting", font=(MONO, 9),
+                                   bg=BG, fg=FG_MID)
+        self.lbl_status.pack(side="left", pady=4)
 
-        self.btn_outer = tk.Frame(inner, bg=FG_MID, cursor="hand2",
-                                  highlightbackground=AMBER_D, highlightthickness=1)
+        self.btn_outer = tk.Frame(inner, bg=AMBER_D, cursor="hand2",
+                                  highlightbackground=AMBER, highlightthickness=1)
         self.btn_lbl = tk.Label(self.btn_outer, text="  SEND  ",
-                                font=(MONO, 9, "bold"), bg=FG_MID, fg="#B0B0B0",
-                                padx=14, pady=2)
+                                font=(MONO, 11, "bold"), bg=AMBER_D, fg=FG,
+                                padx=24, pady=6)
         self.btn_lbl.pack()
         self.btn_outer.pack(side="right")
         for w in (self.btn_outer, self.btn_lbl):
@@ -414,8 +414,8 @@ class UploadApp:
         self.lbl_size.config(text="")
         self.lbl_status.config(text="error", fg=RED)
         self.file_content = ""
-        self.btn_lbl.config(text="  SEND  ", bg=FG_MID, fg="#B0B0B0")
-        self.btn_outer.config(bg=FG_MID)
+        self.btn_lbl.config(text="  SEND  ", bg=AMBER_D, fg=FG)
+        self.btn_outer.config(bg=AMBER_D)
 
     def _btn_hover(self, on):
         if not self.file_content:
