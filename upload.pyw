@@ -224,9 +224,10 @@ class UploadApp:
                                    bg=BG, fg=FG_DIM)
         self.lbl_status.pack(side="left")
 
-        self.btn_outer = tk.Frame(inner, bg=FG_DIM, cursor="hand2")
+        self.btn_outer = tk.Frame(inner, bg=FG_MID, cursor="hand2",
+                                  highlightbackground=AMBER_D, highlightthickness=1)
         self.btn_lbl = tk.Label(self.btn_outer, text="  SEND  ",
-                                font=(MONO, 9, "bold"), bg=FG_DIM, fg="#333",
+                                font=(MONO, 9, "bold"), bg=FG_MID, fg="#B0B0B0",
                                 padx=14, pady=2)
         self.btn_lbl.pack()
         self.btn_outer.pack(side="right")
@@ -413,8 +414,8 @@ class UploadApp:
         self.lbl_size.config(text="")
         self.lbl_status.config(text="error", fg=RED)
         self.file_content = ""
-        self.btn_lbl.config(text="  SEND  ", bg=FG_DIM, fg="#333")
-        self.btn_outer.config(bg=FG_DIM)
+        self.btn_lbl.config(text="  SEND  ", bg=FG_MID, fg="#B0B0B0")
+        self.btn_outer.config(bg=FG_MID)
 
     def _btn_hover(self, on):
         if not self.file_content:

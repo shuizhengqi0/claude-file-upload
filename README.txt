@@ -64,10 +64,8 @@ README.txt        本说明文件
 
 可选依赖（增强拖拽体验）：
   pip install windnd
-  或
-  pip install tkinterdnd2
 
-如果没有安装以上可选依赖，仍然可以点击窗口手动选择文件。
+如果没有安装 windnd，拖拽功能不可用，但可以点击窗口中央选择文件。
 
 --- 常见问题 ---
 
@@ -78,8 +76,9 @@ Q: 点击 SEND 后 Claude Code 没有自动识别？
 A: 确认 check_upload.py 路径正确，settings.json 配置无误，
    并重启 Claude Code。可查看 ~/upload_debug.log 排查问题。
 
-Q: SEND 按钮是灰色的？
-A: 需要先拖入或选择一个文件，按钮才会变为可用状态。
+Q: SEND 按钮在哪里？
+A: 在窗口底部右下角。未选择文件时显示为灰色 SEND 字样（带暗金边框），
+   选择文件后会变为醒目的琥珀色。如果看不到，请确认窗口已完全展开。
 
 Q: 中文显示乱码？
 A: 文件编码应为 UTF-8。其他编码会自动替换无法识别的字符。
